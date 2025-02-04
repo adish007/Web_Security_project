@@ -1,0 +1,6 @@
+Cite sources you conslulted for this MP here:
+https://dev.mysql.com/doc/refman/8.4/en/union.html
+https://www.w3schools.com/sql/func_mysql_database.asp
+https://www.w3schools.com/sql/func_mysql_database.asp#:~:text=The%20DATABASE()%20function%20returns%20the%20name%20of%20the%20current%20database.
+https://www.dashbase.ai/sql-snippets/mysql/concat-strings-mysql
+https://www.geeksforgeeks.org/md5-hash-python/

