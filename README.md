@@ -17,4 +17,4 @@ This project involved a security assessment of a simulated web application, "Bun
 *   Crafted CSRF attacks to perform unauthorized actions on behalf of users, even with token-based protections.
 *   Implemented security measures to protect "Bungle!" from these attacks.
 
-## Please read the WebSec_handout.pdf to learn more about the project and What I did
+Please read the WebSec_handout.pdf to learn more about the project and what I did
